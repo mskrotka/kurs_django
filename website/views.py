@@ -18,6 +18,7 @@ def front(request):
 
 @login_required()
 def nowy_film(request):
+    czy_nowy = True
     form_film = FilmForm(request.POST or None, request.FILES or None)
     form_dodatkowe = DodatkoweInfoForm(request.POST or None)
 
@@ -30,7 +31,7 @@ def nowy_film(request):
 
     return render(request, 'film_form.html', {'form': form_film,
                                               'form_dodatkowe': form_dodatkowe,
-                                              'czy_nowy': True})
+                                              'czy_nowy': czy_nowy})
 
 
 @login_required()
