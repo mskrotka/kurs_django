@@ -1,0 +1,85 @@
+{% extends 'glowny.html' %}
+
+
+{% block title %} Strona front {% endblock %}
+
+
+{% block strona %}
+
+
+
+
+<div class="jumbotron">
+    {% if user.is_authenticated %}
+  <h1 class="display-4">Witaj {{ user.username }}</h1>
+    <a href="{% url 'logout' %}" class="btn btn-warning"><i class="fas fa-user"></i> Wyloguj</a><br><br>
+    <a href="{% url 'nowy_film' %}"><i class="fas fa-plus-square"></i> Dodaj nowy film</a>
+    {% else %}
+    <a href="{% url 'login' %}" class="btn btn-warning"><i class="fas fa-user"></i> Zaloguj</a>
+    {% endif %}
+</div>
+
+
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+    {% if filmy|length == 0 %}
+        <h2>Brak filmów</h2>
+    {% else %}
+        <h2>Ilość filmów w BD: {{ filmy|length }}</h2>
+        {% for item in filmy %}
+
+<div class="card" style="width: 26rem;">
+  <div class="card-body">
+      <div class="row">
+          <div class="col-sm-3">
+                {% if item.plakat == '' %}
+                    <p>[brak zdjęcia]</p>
+                {% else %}
+                    <img style="width: 80px;" src="media/{{ item.plakat }}">
+                {% endif %}
+          </div>
+          <div class="col-sm-9">
+              <div class="row">
+                  <div class="col-sm-9">
+                      <h5 class="card-title">{{ item.tytul }} ({{ item.rok }})</h5>
+                  </div>
+                  <div class="col-sm-3">
+                      {% if user.is_authenticated %}
+                      <a href="{% url 'edytuj_film' item.id %}"><i class="fas fa-edit"></i></a>
+                      <a href="{% url 'skasuj_film' item.id %}"><i class="fas fa-trash-alt"></i></a>
+                      {% endif %}
+                  </div>
+              </div>
+              <p class="card-text">{{ item.opis }}</p>
+          </div>
+
+
+
+
+
+      </div>
+  </div>
+</div>
+        {% endfor %}
+    {% endif %}
+
+
+
+<br><br><br><br>
+
+{% for item in social %}
+{{ item }}
+{% endfor %}
+<br><br><br><br>
+
+{% endblock %}

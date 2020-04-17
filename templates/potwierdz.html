@@ -1,0 +1,14 @@
+{% extends 'glowny.html' %}
+
+
+{% block title %} Potwierdź {% endblock %}
+
+
+{% block strona %}
+    <h1>Czy na pewno chcesz usnąć film: {{ film.tytul }}?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Skasuj</button>
+</form>
+<a href="{% url 'front' %}">Cofnij</a>
+{% endblock %}
