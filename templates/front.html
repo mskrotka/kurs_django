@@ -10,13 +10,13 @@
 
 
 <div class="jumbotron">
-    {% if user.is_authenticated %}
+
   <h1 class="display-4">Witaj {{ user.username }}</h1>
     <a href="{% url 'logout' %}" class="btn btn-warning"><i class="fas fa-user"></i> Wyloguj</a><br><br>
     <a href="{% url 'nowy_film' %}"><i class="fas fa-plus-square"></i> Dodaj nowy film</a>
-    {% else %}
+
     <a href="{% url 'login' %}" class="btn btn-warning"><i class="fas fa-user"></i> Zaloguj</a>
-    {% endif %}
+
 </div>
 
 
