@@ -5,7 +5,7 @@ from .models import Film, DadatkoweInfo, Ocena
 class FilmForm(ModelForm):
     class Meta:
         model = Film
-        fields = ['tytul', 'opis', 'premiera', 'rok', 'imdb_rating', 'plakat']
+        fields = ['tytul', 'rok', 'opis', 'premiera', 'imdb_rating', 'plakat']
 
 
 class DodatkoweInfoForm(ModelForm):
