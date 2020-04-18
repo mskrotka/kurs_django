@@ -38,7 +38,7 @@
     <h5 class="card-title">Oceń film</h5>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form_ocena|bootstrap }}
+        {{ form_ocena }}
         <button type="submit" class="btn btn-success">Dodaj ocenę</button>
     </form>
   </div>
