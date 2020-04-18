@@ -63,12 +63,13 @@
 
 
 <br><br><br><br>
-
-{{ nowa_klasa }}
-
+{% for item in nowa_klasa %}
+{{ item }}
+{% endfor %}
+<br><br>
 {% for item in social %}
 {{ item }}
 {% endfor %}
-<br><br><br><br>
+<br><br>
 
 {% endblock %}
