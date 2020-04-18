@@ -16,7 +16,6 @@ def front(request):
     return render(request, 'front.html', context)
 
 
-@login_required()
 def nowy_film(request):
     form_film = FilmForm(request.POST or None, request.FILES or None)
     form_dodatkowe = DodatkoweInfoForm(request.POST or None)
@@ -32,10 +31,8 @@ def nowy_film(request):
                                               'form_dodatkowe': form_dodatkowe})
 
 
-@login_required()
 def edytuj_film(request, id):
     film = get_object_or_404(Film, pk=id)
-
     oceny = Ocena.objects.filter(film=film)
 
     try:
@@ -66,7 +63,6 @@ def edytuj_film(request, id):
                                               'form_dodatkowe': form_dodatkowe})
 
 
-@login_required()
 def usun_film(request, id):
     film = get_object_or_404(Film, pk=id)
 
