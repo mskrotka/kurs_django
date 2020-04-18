@@ -49,3 +49,10 @@ class Aktor(models.Model):
     imie = models.CharField(max_length=32)
     nazwisko = models.CharField(max_length=32)
     filmy = models.ManyToManyField(Film)
+
+
+class NowaKlasa(models.Model):
+    name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return f'{self.name}'

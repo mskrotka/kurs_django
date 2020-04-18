@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Film, SocialLinks, DadatkoweInfo, Ocena
+from .models import Film, SocialLinks, DadatkoweInfo, Ocena, NowaKlasa
 from .forms import FilmForm, DodatkoweInfoForm, OcenaForm
 
 wszystkie = Film.objects.all()
 social_links = SocialLinks.objects.all()
 
+
 context = {
     'filmy': wszystkie,
     'social': social_links
+
 }
 
 
@@ -26,8 +28,10 @@ def nowy_film(request):
         film.save()
         return redirect(front)
 
+    now_test = NowaKlasa.onjects.all()
     return render(request, 'film_form.html', {'form': form_film,
-                                              'form_dodatkowe': form_dodatkowe})
+                                              'form_dodatkowe': form_dodatkowe,
+                                              'nowa_klasa': now_test})
 
 
 def edytuj_film(request, id):
