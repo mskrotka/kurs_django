@@ -28,7 +28,7 @@ def nowy_film(request):
         film.save()
         return redirect(front)
 
-    now_test = NowaKlasa.onjects.all()
+    now_test = NowaKlasa.objects.all()
     return render(request, 'film_form.html', {'form': form_film,
                                               'form_dodatkowe': form_dodatkowe,
                                               'nowa_klasa': now_test})
