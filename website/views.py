@@ -18,17 +18,7 @@ def front(request):
 
 def nowy_film(request):
     form_film = FilmForm(request.POST or None, request.FILES or None)
-    form_dodatkowe = DodatkoweInfoForm(request.POST or None)
-
-    if form_film.is_valid() and form_dodatkowe.is_valid():
-        film = form_film.save(commit=False)
-        dodatkowe = form_dodatkowe.save()
-        film.dodatkowe = dodatkowe
-        film.save()
-        return redirect(front)
-
-    return render(request, 'film_form.html', {'form': form_film,
-                                              'form_dodatkowe': form_dodatkowe})
+    return render(request, 'film_form.html', {'form': form_film})
 
 
 def edytuj_film(request, id):
