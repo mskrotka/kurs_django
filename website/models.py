@@ -25,9 +25,6 @@ class Film(models.Model):
     dodatkowe = models.OneToOneField(DadatkoweInfo, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return self.tytul_z_rokierm()
-
-    def tytul_z_rokierm(self):
         return f'{self.tytul} ({self.rok})'
 
 

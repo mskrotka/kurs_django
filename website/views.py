@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from .models import Film, SocialLinks, DadatkoweInfo, Ocena
 from .forms import FilmForm, DodatkoweInfoForm, OcenaForm
 
@@ -18,11 +17,22 @@ def front(request):
 
 def nowy_film(request):
     form_film = FilmForm(request.POST or None, request.FILES or None)
-    return render(request, 'film_form.html', {'form': form_film})
+    form_dodatkowe = DodatkoweInfoForm(request.POST or None)
+
+    if form_film.is_valid() and form_dodatkowe.is_valid():
+        film = form_film.save(commit=False)
+        dodatkowe = form_dodatkowe.save()
+        film.dodatkowe = dodatkowe
+        film.save()
+        return redirect(front)
+
+    return render(request, 'film_form.html', {'form': form_film,
+                                              'form_dodatkowe': form_dodatkowe})
 
 
 def edytuj_film(request, id):
     film = get_object_or_404(Film, pk=id)
+
     oceny = Ocena.objects.filter(film=film)
 
     try:
