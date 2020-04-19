@@ -1,14 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Film, SocialLinks, DadatkoweInfo, Ocena
+from .models import Film, SocialLinks, DadatkoweInfo, Ocena, Rezyser
 from .forms import FilmForm, DodatkoweInfoForm, OcenaForm
 
 wszystkie = Film.objects.all()
 social_links = SocialLinks.objects.all()
-
+rezyser = Rezyser.objects.all()
 context = {
     'filmy': wszystkie,
-    'social': social_links
+    'social': social_links,
+    'rezyser' : rezyser
 }
 
 
@@ -75,3 +76,5 @@ def usun_film(request, id):
         return redirect(front)
 
     return render(request, 'potwierdz.html', {'film': film})
+
+
