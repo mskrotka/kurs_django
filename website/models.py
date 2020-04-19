@@ -65,4 +65,5 @@ class Rezyser(models.Model):
     filmy = models.ManyToManyField(Film)
 
     def __str__(self):
-        return self.imie
+        return f'{self.imie} {self.nazwisko}'
+
