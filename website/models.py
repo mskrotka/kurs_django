@@ -66,3 +66,11 @@ class Rezyser(models.Model):
 
     def __str__(self):
         return self.imie
+
+
+class NowaKlasaDupa(models.Model):
+    name = models.CharField(max_length=128)
+    title = models.CharField(max_length=128)
+
+    def __str__(self):
+        return f'{self.name}, {self.title}'
