@@ -1,15 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Film, SocialLinks, DadatkoweInfo, Ocena, NowaKlasa
+from django.contrib.auth.decorators import login_required
+from .models import Film, SocialLinks, DadatkoweInfo, Ocena, Rezyser
 from .forms import FilmForm, DodatkoweInfoForm, OcenaForm
 
 wszystkie = Film.objects.all()
 social_links = SocialLinks.objects.all()
+rezyser = Rezyser.objects.all()
 now_test = NowaKlasa.objects.all()
 
 context = {
     'filmy': wszystkie,
     'social': social_links,
-    'nowa_klasa': now_test
+    'rezyser': rezyser
 }
 
 

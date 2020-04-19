@@ -32,7 +32,8 @@ class SocialLinks(models.Model):
     social_name = models.PositiveSmallIntegerField(choices=social_links_list())
     link = models.CharField(max_length=128)
 
-    # Wygenerowanie nazwy social media
+    """ Wygenerowanie nazwy social media """
+
     def __str__(self):
         for i in social_links_list():
             if self.social_name == i[0]:
@@ -56,3 +57,12 @@ class NowaKlasa(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class Rezyser(models.Model):
+    imie = models.CharField(max_length=32)
+    nazwisko = models.CharField(max_length=32)
+    filmy = models.ManyToManyField(Film)
+
+    def __str__(self):
+        return self.imie
