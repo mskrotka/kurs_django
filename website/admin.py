@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Film, SocialLinks, DadatkoweInfo, Ocena, Aktor, NowaKlasa, Rezyser
+from .models import Film, SocialLinks, DadatkoweInfo, Ocena, Aktor, NowaKlasa, Rezyser, NowaKlasaDupa
 
 
 admin.site.register(SocialLinks)
@@ -19,4 +19,5 @@ admin.site.register(Ocena)
 admin.site.register(Aktor)
 admin.site.register(NowaKlasa)
 admin.site.register(Rezyser)
+admin.site.register(NowaKlasaDupa)
 
